@@ -9,10 +9,10 @@ function PlayGame() {
   return (
     <Container>
       <div className="top-section">
-       <TotalScore />
-       <SelectNumber />
+        <TotalScore />
+        <SelectNumber />
       </div>
-      <div className="dices">
+      {/* <div className="dices">
         <div className="dice_box">
           <img src={dice_1} alt="" />
           <p>Click on Dice to roll</p>
@@ -21,7 +21,7 @@ function PlayGame() {
           <OutlineButton>Reset score</OutlineButton>
           <Button>Show Result</Button>
         </div>
-      </div> 
+      </div>  */}
     </Container>
   );
 }
@@ -33,15 +33,12 @@ const Container = styled.div`
   height: 856px;
   border: 1px solid;
   .top-section {
-    margin-top: 64px;
-    margin-left: 80px;
-    margin-right: 80px;
-    margin-bottom: 48px;
     display: flex;
+    justify-content: space-between;
+    margin: 64px 80px 48px 80px;
     align-items: center;
-    gap: 593px;
-      /* width: 1280px; */
-    border: 1px solid green;}
+    /* border: 5px solid green; */
+  }
 
   .dices {
     gap: 36px;
