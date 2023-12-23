@@ -29,8 +29,8 @@ const Container = styled.div`
   display: flex;
   margin: 0 auto;
   align-items: center;
-  /* margin-top: 180px;
-  margin-bottom: 154px; */
+  margin-top: 180px;
+  margin-bottom: 154px;
 
   .text-box {
     h1 {

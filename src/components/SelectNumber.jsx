@@ -32,13 +32,13 @@ function SelectNumber() {
 export default SelectNumber;
 
 const NumberSection = styled.div`
-  border: 3px solid gainsboro;
+  /* border: 3px solid gainsboro; */
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   gap: 30px;
   .number-section {
-    border: 1px dashed;
+    /* border: 1px dashed; */
     display: flex;
     flex-direction: row;
     align-items: flex-end;

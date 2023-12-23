@@ -12,7 +12,7 @@ function PlayGame() {
         <TotalScore />
         <SelectNumber />
       </div>
-      {/* <div className="dices">
+      <DiceContainer>
         <div className="dice_box">
           <img src={dice_1} alt="" />
           <p>Click on Dice to roll</p>
@@ -21,7 +21,7 @@ function PlayGame() {
           <OutlineButton>Reset score</OutlineButton>
           <Button>Show Result</Button>
         </div>
-      </div>  */}
+      </DiceContainer>
     </Container>
   );
 }
@@ -31,7 +31,8 @@ export default PlayGame;
 const Container = styled.div`
   max-width: 1440px;
   height: 856px;
-  border: 1px solid;
+  margin: 0 auto;
+  /* border: 1px solid; */
   .top-section {
     display: flex;
     justify-content: space-between;
@@ -39,45 +40,46 @@ const Container = styled.div`
     align-items: center;
     /* border: 5px solid green; */
   }
+`;
 
-  .dices {
-    gap: 36px;
-    height: 449px;
-    width: 250px;
-    border: 1px solid;
+const DiceContainer = styled.div`
+  gap: 36px;
+  height: 440px;
+  width: 225px;
+  /* border: 1px solid; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  .dice_box {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 0 auto;
-    .dice_box {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 15px;
+    gap: 15px;
 
-      p {
-        color: #000;
-        font-family: Poppins;
-        font-size: 24px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: normal;
-        width: 229px;
-      }
+    p {
+      color: #000;
+      font-family: Poppins;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      width: 229px;
+      padding-left: 28px;
+    }
 
-      img {
-        width: 250px;
-        height: 250px;
-      }
+    img {
+      width: 225px;
+      height: 225px;
     }
-    .btns {
-      /* border: 1px solid; */
-      width: 220px;
-      height: 112px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 24px;
-    }
+  }
+  .btns {
+    /* border: 1px solid; */
+    width: 220px;
+    height: 112px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
   }
 `;

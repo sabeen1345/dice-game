@@ -5,7 +5,7 @@ import DiceGame from './components/DiceGame';
 import PlayGame from './components/PlayGame';
 
 function App() {
-  const [showDiceGame, setShowDiceGame] = useState(false);
+  const [showDiceGame, setShowDiceGame] = useState(true);
 
   const toggleGame = () => {
     setShowDiceGame(!showDiceGame);
