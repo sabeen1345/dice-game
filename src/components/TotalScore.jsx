@@ -1,13 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-function TotalScore() {
-   
+function TotalScore({ score }) {
   return (
     <ScoreSection>
       <div className="score-section">
-       
-        <h1>0</h1>
+        <h1>{score}</h1>
         <p>Total Score</p>
       </div>
     </ScoreSection>
@@ -18,11 +16,10 @@ export default TotalScore;
 
 const ScoreSection = styled.div`
   .score-section {
-    /* border: 1px solid; */
-     display: flex;
+    display: flex;
     flex-direction: column;
-    align-items: center; 
-    width: 115px; 
+    align-items: center;
+    width: 115px;
     h1 {
       font-size: 84px;
       line-height: 64px;

@@ -1,6 +1,6 @@
 // import React, { useState } from "react";
 import styled from "styled-components";
-
+import { Link } from 'react-router-dom';
 import dices from "../images/dices.png";
 import { Button } from "./Button";
 
@@ -13,6 +13,7 @@ function DiceGame({ toggleGame }) {
       </div>
       <div className="text-box">
         <h1>DICE GAME</h1>
+       
         <Button onClick={toggleGame}>Play Now</Button>
       </div>
     </Container>

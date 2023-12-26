@@ -1,31 +1,33 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-function SelectNumber() {
+function SelectNumber({ setError, selectNum, setSelectNum, error }) {
   const ary = [1, 2, 3, 4, 5, 6];
-
-  const [selectNum, setSelectNum] = useState();
 
   const handleSelectNumber = (value) => {
     setSelectNum(value);
-    console.log(value);
+    setError("");
+    // console.log(value);
   };
 
   return (
-    <NumberSection>
-      <div className="number-section">
-        {ary.map((value, i) => (
-          <Number
-            isSelected={value === selectNum}
-            key={i}
-            onClick={() => handleSelectNumber(value)}
-          >
-            {value}
-          </Number>
-        ))}
-      </div>
-      <p>Select Number</p>
-    </NumberSection>
+    <div>
+      <NumberSection>
+        <p className="error">{error}</p>
+        <div className="number-section">
+          {ary.map((value, i) => (
+            <Number
+              isSelected={value === selectNum}
+              key={i}
+              onClick={() => handleSelectNumber(value)}
+            >
+              {value}
+            </Number>
+          ))}
+        </div>
+        <p>Select Number</p>
+      </NumberSection>
+    </div>
   );
 }
 
@@ -37,6 +39,14 @@ const NumberSection = styled.div`
   flex-direction: column;
   align-items: flex-end;
   gap: 30px;
+  .error {
+    color: #ff0c0c;
+    font-family: Poppins;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
   .number-section {
     /* border: 1px dashed; */
     display: flex;
@@ -46,7 +56,7 @@ const NumberSection = styled.div`
     width: 552px;
   }
   p {
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 700px;
   }
 `;

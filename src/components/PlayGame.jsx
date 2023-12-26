@@ -1,27 +1,67 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import dice_1 from "../images/dice_1.png";
-import { Button, OutlineButton } from "./Button";
 import TotalScore from "./TotalScore";
 import SelectNumber from "./SelectNumber";
+import RoleDice from "./RoleDice";
+import Rules from "./Rules";
+import dice_1 from "../images/dice_1.png";
+import dice_2 from "../images/dice_2.png";
+import dice_3 from "../images/dice_3.png";
+import dice_4 from "../images/dice_4.png";
+import dice_5 from "../images/dice_5.png";
+import dice_6 from "../images/dice_6.png";
+const diceFaces = [dice_1, dice_2, dice_3, dice_4, dice_5, dice_6];
 
 function PlayGame() {
+  const [error, setError] = useState();
+  const [score, setScore] = useState(0);
+  const [selectNum, setSelectNum] = useState();
+  const [currentDice, setCurrentDice] = useState(diceFaces[0]);
+  const [showRules, setShowRules] = useState(false);
+  const rollDice = () => {
+    if (!selectNum) {
+      setError("You have not selected any number");
+      return;
+    }
+
+    const randomIndex = Math.floor(Math.random() * diceFaces.length);
+    const rolledDice = diceFaces[randomIndex];
+
+    setCurrentDice(rolledDice);
+    if (selectNum === randomIndex + 1) {
+      setScore((score) => score + randomIndex);
+      console.log("Match!");
+    } else {
+      setScore((score) => score - 1);
+      console.log("No match");
+    }
+    setSelectNum(undefined);
+  };
+  const resetScore = () => {
+    setScore(0);
+  };
+  const toggleRules = () => {
+    setShowRules(!showRules);
+  };
   return (
     <Container>
       <div className="top-section">
-        <TotalScore />
-        <SelectNumber />
+        <TotalScore score={score} />
+        <SelectNumber
+          selectNum={selectNum}
+          setSelectNum={setSelectNum}
+          setError={setError}
+          error={error}
+
+        />
       </div>
-      <DiceContainer>
-        <div className="dice_box">
-          <img src={dice_1} alt="" />
-          <p>Click on Dice to roll</p>
-        </div>
-        <div className="btns">
-          <OutlineButton>Reset score</OutlineButton>
-          <Button>Show Result</Button>
-        </div>
-      </DiceContainer>
+      <RoleDice
+        currentDice={currentDice}
+        rollDice={rollDice}
+        resetScore={resetScore}
+        toggleRules={toggleRules}
+      />
+      {showRules && <Rules />}
     </Container>
   );
 }
@@ -32,54 +72,10 @@ const Container = styled.div`
   max-width: 1440px;
   height: 856px;
   margin: 0 auto;
-  /* border: 1px solid; */
   .top-section {
     display: flex;
     justify-content: space-between;
     margin: 64px 80px 48px 80px;
     align-items: center;
-    /* border: 5px solid green; */
-  }
-`;
-
-const DiceContainer = styled.div`
-  gap: 36px;
-  height: 440px;
-  width: 225px;
-  /* border: 1px solid; */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0 auto;
-  .dice_box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-
-    p {
-      color: #000;
-      font-family: Poppins;
-      font-size: 20px;
-      font-style: normal;
-      font-weight: 500;
-      line-height: normal;
-      width: 229px;
-      padding-left: 28px;
-    }
-
-    img {
-      width: 225px;
-      height: 225px;
-    }
-  }
-  .btns {
-    /* border: 1px solid; */
-    width: 220px;
-    height: 112px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 24px;
   }
 `;
